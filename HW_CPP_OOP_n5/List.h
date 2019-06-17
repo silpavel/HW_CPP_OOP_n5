@@ -15,8 +15,7 @@ public:
 	~List();
 
 	void addEnd(int data);
-	void del();
-	void find();
+	void addHome(int data);
 	void show();
 };
 #endif LIST_H

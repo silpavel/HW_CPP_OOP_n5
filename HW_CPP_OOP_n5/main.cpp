@@ -27,7 +27,7 @@ void task2() {
 	lst.addEnd(1);
 	lst.addEnd(4);
 	lst.addEnd(9);
-	lst.addEnd(16);
-	lst.addEnd(25);
+	lst.addHome(-1);
+	lst.addHome(-4);
 	lst.show();
 }

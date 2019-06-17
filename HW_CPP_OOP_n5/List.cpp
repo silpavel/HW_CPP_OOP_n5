@@ -18,6 +18,11 @@ void List::addEnd(int data) {
 		buf->next = new elem(data);
 	}
 }
+void List::addHome(int data) {
+	elem *tmp = head;
+	head = new elem(data);
+	head->next = tmp;
+}
 void List::show() {
 	elem *buf = head;
 	cout << "[ ";
