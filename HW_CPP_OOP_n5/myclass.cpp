@@ -13,15 +13,15 @@ int myclass::getX() { return x; }
 int myclass::getY() { return y; }
 int myclass::getZ() { return z; }
 void myclass::show() {
-	cout << "( " << x << ", " << y << ", " << z << " )";
+	cout << "( " << x << ", " << y << ", " << z << " )\n";
 }
-myclass::myclass(int x = 0, int y = 0, int z = 0) :x(x), y(y), z(z) {
-	cout << "myclass(xyz) constr\n";
+myclass::myclass(int x, int y, int z) :x(x), y(y), z(z) {
+	cout << "myclass(xyz) constr " << (int)this << endl;;
 }
 void myclass::free_instance(myclass *inst) {
-	//дополнительные действия помимо удаления объекта
+	//дополнительные действия, помимо удаления объекта, невозможные внутри деструктора
 	delete inst;
 }
 myclass::~myclass() {
-	cout<<
+	cout << "myclass destructor " << (int)this << endl;
 }
