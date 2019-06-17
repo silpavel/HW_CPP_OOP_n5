@@ -1,5 +1,6 @@
 #include <iostream>
 #include "myclass.h"
+#include "List.h"
 using namespace std;
 void task1();
 void task2();
@@ -22,5 +23,11 @@ void task1() {
 	myclass::free_instance(my2);
 }
 void task2() {
-
+	List lst;
+	lst.addEnd(1);
+	lst.addEnd(4);
+	lst.addEnd(9);
+	lst.addEnd(16);
+	lst.addEnd(25);
+	lst.show();
 }
