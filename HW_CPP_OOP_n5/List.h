@@ -17,5 +17,6 @@ public:
 	void addEnd(int data);
 	void addHome(int data);
 	void show();
+	void selectSort();
 };
 #endif LIST_H

@@ -25,9 +25,10 @@ void task1() {
 void task2() {
 	List lst;
 	lst.addEnd(1);
+	lst.addEnd(7);
 	lst.addEnd(4);
-	lst.addEnd(9);
-	lst.addHome(-1);
-	lst.addHome(-4);
+	lst.addHome(17);
+	lst.addHome(9);
+	
 	lst.show();
 }
