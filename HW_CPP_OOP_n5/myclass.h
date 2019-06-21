@@ -21,9 +21,10 @@ class mytime {
 	int ampm;//0 - am, 1 - pm, 2 - 24
 public:
 	mytime operator+(mytime r_myt);
-	mytime(int hr, int min, int sec, const char *ap);
-	mytime(int hr, int min, int sec);
+	mytime(int hr, int min, int sec, const char *ap="mm");
+	//mytime(int hr, int min, int sec);
 	void show();
+	void convertTime();
 };
 
 

@@ -51,6 +51,8 @@ void task2() {
 
 }
 void task3() {
-	mytime mt(13, 1, 51);
+	mytime mt(2, 1, 5,"pm");
+	mt.show();
+	mt.convertTime();
 	mt.show();
 }

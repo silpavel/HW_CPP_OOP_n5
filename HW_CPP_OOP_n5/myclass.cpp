@@ -26,21 +26,21 @@ myclass::~myclass() {
 	cout << "myclass destructor " << (int)this << endl;
 }
 //////////////////////
-mytime::mytime(int hr, int min, int sec) {
-	//имитация переполнения
-	seconds = (sec < 60) ? sec : sec%60;
-	minutes = (min < 60) ? min : min%60;
-	hours = (hr < 24) ? hr : hr % 24;
-	ampm = 2;
-}
+
 mytime::mytime(int hr, int min, int sec, const char* ap) {
 	//имитация переполнения
 	seconds = (sec < 60) ? sec : sec % 60;
 	minutes = (min < 60) ? min : min % 60;
-	hours = (hr <= 12) ? hr : hr % 13+1;
+	
 	if (strcmp(ap, "am") == 0) ampm = 0;
 	else if (strcmp(ap, "pm") == 0) ampm = 1;
 	else ampm = 2;
+	if(ampm==2)
+		hours = (hr < 24) ? hr : hr % 24;
+	else {
+		hours = (hr <= 12) ? hr : hr % 13 + 1;
+		if (hours == 0) hours = 12;
+	}
 }
 
 void mytime::show() {
@@ -58,4 +58,11 @@ void mytime::show() {
 	}
 	cout << endl;
 
+}
+void mytime::convertTime() {
+	if (ampm < 2) {
+		if (ampm == 0 && hours == 12) hours = 0;//12:00am = 00:00
+		else if (ampm == 1 && hours != 12) hours = hours+12;//3:00pm=12+3=15
+		ampm = 2;
+	}
 }
