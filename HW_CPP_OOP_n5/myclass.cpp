@@ -25,3 +25,18 @@ void myclass::free_instance(myclass *inst) {
 myclass::~myclass() {
 	cout << "myclass destructor " << (int)this << endl;
 }
+//////////////////////
+mytime::mytime(char sec, char min, char hr) {
+	//имитация переполнения
+	seconds = (sec < 60) ? sec : sec%60;
+	minutes = (min < 60) ? min : min%60;
+	hours = (hr < 24) ? hr : hr % 24;
+}
+void mytime::show() {
+	if (hours == 0) cout << "00";
+	cout << " : ";
+	if (minutes < 10) cout << "0";
+	if (minutes == 0) cout << "0";
+	cout << " : ";
+
+}

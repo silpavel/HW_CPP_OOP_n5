@@ -14,5 +14,16 @@ public:
 	int getZ();
 	void show();
 };
+class mytime {
+	char seconds;// 0..59
+	char minutes;// 0..59
+	char hours;// 0..23
+public:
+	mytime operator+(mytime r_myt);
+	mytime(char sec, char min, char hr);
+	mytime() :seconds(0), minutes(0), hours(0) {};
+	void show();
+};
+
 
 #endif MYCLASS_H
