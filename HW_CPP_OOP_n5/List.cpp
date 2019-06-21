@@ -10,18 +10,24 @@ List::elem::~elem() {
 void List::addEnd(int data) {
 	if (head == NULL) {
 		head = new elem(data);
+		if (head) count++;//память выделена
 	}
 	else {//find last elem
 		elem* buf = head;
 		while (buf->next)
 			buf = buf->next;
 		buf->next = new elem(data);
+		if (buf->next) count++;//память выделена
 	}
 }
 void List::addHome(int data) {
-	elem *tmp = head;
-	head = new elem(data);
-	head->next = tmp;
+	//добавление в начало практически мгновенно
+	elem *tmp= new elem(data);
+	if (tmp) {//память выделена
+		count++;
+		tmp->next = head;//сдвигаем список
+		head = tmp;
+	}
 }
 void List::show() {
 	elem *buf = head;
@@ -46,19 +52,32 @@ List::~List() {
 	}
 }
 void List::selectSort() {//сортировка выбором
-	List lst;//создаем пустой список
-	//список будет по возрастанию. Быстрее вставлять в начало.
-	//искать будем максимальный элемент, брать будем первый из списка.
-	//this - указать на список, который нужно отсортировать
-	if (this->head == NULL) return;//список пуст
-	elem *pmax = this->head;//указатель на первый элемент (контейнер)
-	int vmax = pmax->data;//его полезная нагрузка
-	//ищем элемент, который его больше
-	elem *prevmax=NULL;//адрес элемента, стоящего перед максимальным
-	while (pmax) {
-		if (pmax->next->data > pmax->data) {
+	elem* prev=head; //указатель на текущий элемент
+	if (!prev) return;//0 elems
+	if (!prev->next) return;//1 elem
+	int maxcount = count-2;//count of elems
+	int currentcount;
+	while (maxcount >= 0) {//12345 1234 123 12
+		//возвращаемся к началу списка
+		currentcount = 0;
+		prev = head;
+		while (currentcount <= maxcount) {
+			currentcount++;
+			/*
+			Далее происходит обмен значениями (содержимым).
+			Если бы содержимым были сложные объекты, то точно
+			так же можно обменять значения указателей.
+			*/
+			if (prev->data > prev->next->data) {
+				int tmpdata = prev->data;
+				prev->data = prev->next->data;
+				prev->next->data = tmpdata;
+			}
+			prev = prev->next;
 			
 		}
+		maxcount--;
+		
 	}
 
 }

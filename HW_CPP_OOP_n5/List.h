@@ -10,6 +10,7 @@ class List {
 		int data;
 	};
 	elem *head;
+	int count=0;
 public:
 	List() { head = NULL; }
 	~List();
