@@ -21,11 +21,24 @@ class mytime {
 	int ampm;//0 - am, 1 - pm, 2 - 24
 public:
 	mytime operator+(mytime r_myt);
+	mytime operator-(mytime r_myt);
+	bool operator==(mytime r_myt);
+	
 	mytime(int hr, int min, int sec, const char *ap="mm");
 	//mytime(int hr, int min, int sec);
 	void show();
 	void convertTime();
 };
+
+//здесь private поля недоступны
+/*
+ostream& operator<<(ostream& out, const mytime& mt) {
+	mt.seconds;
+	return out;
+}
+*/
+
+
 
 
 #endif MYCLASS_H

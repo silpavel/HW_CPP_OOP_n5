@@ -44,6 +44,7 @@ mytime::mytime(int hr, int min, int sec, const char* ap) {
 }
 
 void mytime::show() {
+	
 	if (hours == 0) cout << "00";
 	else cout << hours;
 	cout << ":";
@@ -57,6 +58,7 @@ void mytime::show() {
 	case 1:cout << " pm"; break;
 	}
 	cout << endl;
+	
 
 }
 void mytime::convertTime() {
@@ -66,3 +68,53 @@ void mytime::convertTime() {
 		ampm = 2;
 	}
 }
+mytime mytime::operator+(mytime r_myt) {
+	int h, m, s;
+	if (this->ampm!=2) this->convertTime();
+	if(r_myt.ampm!=2) r_myt.convertTime();
+	s = this->seconds + r_myt.seconds;
+	m = this->minutes + r_myt.minutes;
+	h = this->hours + r_myt.hours;
+	if (s >= 60) {
+		m = m + 1;
+		s = s % 60;
+	}
+	if (m >= 60) {
+		h = h + 1;
+		m = m % 60;
+	}
+	if (h >= 24) h = h % 24;
+	return mytime(h, m, s);
+}
+mytime mytime::operator-(mytime r_myt) {
+	int h, m, s;
+	if (this->ampm != 2) this->convertTime();
+	if (r_myt.ampm != 2) r_myt.convertTime();
+	s = this->seconds - r_myt.seconds;
+	m = this->minutes - r_myt.minutes;
+	h = this->hours - r_myt.hours;
+	if (s < 0) {
+		s = s+60;
+		m = m - 1;
+	}
+	if (m < 0) {
+		m = m+60;
+		h = h - 1;
+	}
+	if (h < 0) h = h+24;
+	return mytime(h, m, s);
+}
+bool mytime::operator==(mytime r_myt) {
+	if (this->ampm != 2) this->convertTime();
+	if (r_myt.ampm != 2) r_myt.convertTime();
+	return	this->hours == r_myt.hours		
+			&& this->minutes == r_myt.minutes	
+			&& this->seconds == r_myt.seconds;
+}
+/*
+здесь private поля недоступны
+ostream& operator<<(ostream& out, const mytime& mt) {
+	mt.seconds
+	return out;
+}
+*/

@@ -51,8 +51,30 @@ void task2() {
 
 }
 void task3() {
-	mytime mt(2, 1, 5,"pm");
-	mt.show();
-	mt.convertTime();
-	mt.show();
+	/* AMER to 24
+	mytime mtamer(3, 34, 45, "pm");
+	mtamer.show();
+	mtamer.convertTime();
+	mtamer.show();
+	*/
+	mytime mt1(2, 40, 55);
+	mytime mt2(1, 30, 20);
+	mt1.show();
+	cout << "+\n";
+	mt2.show();
+	mytime mtres(0,0,0);
+	cout << "=\n";
+	mtres = mt1 + mt2;
+	mtres.show();
+	cout << "--------------\n";
+	mt2.show();
+	cout << "-\n";
+	mt1.show();
+	cout << "=\n";
+	mtres = mt2 - mt1;
+	mtres.show();
+	mytime mt3(2, 40, 55);
+	cout << (mt1 == mt3) << endl;
+	//cout << mt3;
+	
 }
