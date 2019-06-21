@@ -10,7 +10,7 @@ void task3();
 int main() {
 	//task1();
 	//task2();
-	
+	task3();
 	system("pause");
 	return 0;
 }
@@ -49,4 +49,8 @@ void task2() {
 	lst.selectSort();
 	lst.show();
 
+}
+void task3() {
+	mytime mt(13, 1, 51);
+	mt.show();
 }

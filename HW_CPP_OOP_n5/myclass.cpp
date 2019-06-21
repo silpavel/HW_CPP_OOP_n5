@@ -26,17 +26,36 @@ myclass::~myclass() {
 	cout << "myclass destructor " << (int)this << endl;
 }
 //////////////////////
-mytime::mytime(char sec, char min, char hr) {
+mytime::mytime(int hr, int min, int sec) {
 	//имитация переполнения
 	seconds = (sec < 60) ? sec : sec%60;
 	minutes = (min < 60) ? min : min%60;
 	hours = (hr < 24) ? hr : hr % 24;
+	ampm = 2;
 }
+mytime::mytime(int hr, int min, int sec, const char* ap) {
+	//имитация переполнения
+	seconds = (sec < 60) ? sec : sec % 60;
+	minutes = (min < 60) ? min : min % 60;
+	hours = (hr <= 12) ? hr : hr % 13+1;
+	if (strcmp(ap, "am") == 0) ampm = 0;
+	else if (strcmp(ap, "pm") == 0) ampm = 1;
+	else ampm = 2;
+}
+
 void mytime::show() {
 	if (hours == 0) cout << "00";
-	cout << " : ";
+	else cout << hours;
+	cout << ":";
 	if (minutes < 10) cout << "0";
-	if (minutes == 0) cout << "0";
-	cout << " : ";
+	cout << minutes;
+	cout << ":";
+	if (seconds < 10) cout << "0";
+	cout << seconds;
+	switch(ampm) {
+	case 0:cout << " am"; break;
+	case 1:cout << " pm"; break;
+	}
+	cout << endl;
 
 }

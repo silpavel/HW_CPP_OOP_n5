@@ -15,13 +15,14 @@ public:
 	void show();
 };
 class mytime {
-	char seconds;// 0..59
-	char minutes;// 0..59
-	char hours;// 0..23
+	int seconds;// 0..59
+	int minutes;// 0..59
+	int hours;// 0..23
+	int ampm;//0 - am, 1 - pm, 2 - 24
 public:
 	mytime operator+(mytime r_myt);
-	mytime(char sec, char min, char hr);
-	mytime() :seconds(0), minutes(0), hours(0) {};
+	mytime(int hr, int min, int sec, const char *ap);
+	mytime(int hr, int min, int sec);
 	void show();
 };
 
