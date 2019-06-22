@@ -39,5 +39,5 @@ public:
 
 
 
-#endif MYCLASS_H
+#endif
 

@@ -20,4 +20,4 @@ public:
 	void show();
 	void selectSort();
 };
-#endif LIST_H
+#endif
