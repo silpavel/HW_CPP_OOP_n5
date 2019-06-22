@@ -98,11 +98,21 @@ bool mytime::operator==(mytime r_myt) {
 }
 istream& operator>>(istream& in, mytime& mt) {
 	char ap[4];
-	cin >> mt.hours >> mt.minutes >> mt.seconds;
-	cin.getline(ap,4);
+	int hr, min, sec;
+	cin >> hr >> min >> sec;
+	//имитация переполнения
+	mt.seconds = (sec < 60) ? sec : sec % 60;
+	mt.minutes = (min < 60) ? min : min % 60;
+	cin.getline(ap,4);//читаем am\n pm\n anystring\n  или '\n'
 	if (strcmp(ap, " am") == 0) mt.ampm = 0;
 	else if (strcmp(ap, " pm") == 0) mt.ampm = 1;
 	else mt.ampm = 2;
+	if (mt.ampm == 2)
+		mt.hours = (hr < 24) ? hr : hr % 24;
+	else {
+		mt.hours = (hr <= 12) ? hr : hr % 13 + 1;//13:00 am -> 1:00 am
+		if (mt.hours == 0) mt.hours = 12;
+	}
 	return in;
 }
 ostream& operator<<(ostream& out, mytime& mt) {
