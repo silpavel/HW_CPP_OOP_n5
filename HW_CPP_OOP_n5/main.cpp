@@ -75,6 +75,6 @@ void task3() {
 	mtres.show();
 	mytime mt3(2, 40, 55);
 	cout << (mt1 == mt3) << endl;
-	//cout << mt3;
+	
 	
 }

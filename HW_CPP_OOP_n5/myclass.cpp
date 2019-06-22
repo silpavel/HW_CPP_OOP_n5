@@ -112,9 +112,13 @@ bool mytime::operator==(mytime r_myt) {
 			&& this->seconds == r_myt.seconds;
 }
 /*
-здесь private поля недоступны
-ostream& operator<<(ostream& out, const mytime& mt) {
-	mt.seconds
-	return out;
+ostream& operator<<(ostream& sh, mytime& mt) {
+	sh << "nlkn";
+	return sh;
+}
+istream& operator>>(istream& sh, mytime& mt) {
+	//cin >> mt.hours;//почему член класса недоступен??????!!!!!
+
+	return sh;
 }
 */
