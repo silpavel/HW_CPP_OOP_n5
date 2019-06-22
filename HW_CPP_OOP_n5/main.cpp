@@ -75,6 +75,8 @@ void task3() {
 	mtres.show();
 	mytime mt3(2, 40, 55);
 	cout << (mt1 == mt3) << endl;
-	
+	cout << "set hour min sec and last 'am','pm' or nothing(or any string) for 24h\n";
+	cin >> mt3;
+	cout << mt3;
 	
 }

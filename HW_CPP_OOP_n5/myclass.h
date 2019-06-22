@@ -1,6 +1,8 @@
 #pragma once
 #ifndef MYCLASS_H
 #define MYCLASS_H
+#include <iostream>
+using namespace std;
 class myclass {
 	int x, y, z;
 	myclass(int x = 0, int y = 0, int z = 0);
@@ -24,7 +26,8 @@ public:
 	mytime operator+(mytime r_myt);
 	mytime operator-(mytime r_myt);
 	bool operator==(mytime r_myt);
-	//friend istream& operator>>(istream& inn, mytime& mt);
+	friend istream& operator>>(istream& in, mytime& mt);
+	friend ostream& operator<<(ostream& out, mytime& mt);
 	mytime(int hr, int min, int sec, const char *ap="mm");
 	//mytime(int hr, int min, int sec);
 	void show();

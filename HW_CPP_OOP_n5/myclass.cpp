@@ -44,22 +44,7 @@ mytime::mytime(int hr, int min, int sec, const char* ap) {
 }
 
 void mytime::show() {
-	
-	if (hours == 0) cout << "00";
-	else cout << hours;
-	cout << ":";
-	if (minutes < 10) cout << "0";
-	cout << minutes;
-	cout << ":";
-	if (seconds < 10) cout << "0";
-	cout << seconds;
-	switch(ampm) {
-	case 0:cout << " am"; break;
-	case 1:cout << " pm"; break;
-	}
-	cout << endl;
-	
-
+	cout << *this;
 }
 void mytime::convertTime() {
 	if (ampm < 2) {
@@ -111,14 +96,28 @@ bool mytime::operator==(mytime r_myt) {
 			&& this->minutes == r_myt.minutes	
 			&& this->seconds == r_myt.seconds;
 }
-/*
-ostream& operator<<(ostream& sh, mytime& mt) {
-	sh << "nlkn";
-	return sh;
+istream& operator>>(istream& in, mytime& mt) {
+	char ap[4];
+	cin >> mt.hours >> mt.minutes >> mt.seconds;
+	cin.getline(ap,4);
+	if (strcmp(ap, " am") == 0) mt.ampm = 0;
+	else if (strcmp(ap, " pm") == 0) mt.ampm = 1;
+	else mt.ampm = 2;
+	return in;
 }
-istream& operator>>(istream& sh, mytime& mt) {
-	//cin >> mt.hours;//почему член класса недоступен??????!!!!!
-
-	return sh;
+ostream& operator<<(ostream& out, mytime& mt) {
+	if (mt.hours == 0) out << "00";
+	else out << mt.hours;
+	out << ":";
+	if (mt.minutes < 10) out << "0";
+	out << mt.minutes;
+	out << ":";
+	if (mt.seconds < 10) out << "0";
+	out << mt.seconds;
+	switch (mt.ampm) {
+	case 0:out << " am"; break;
+	case 1:out << " pm"; break;
+	}
+	out << endl;
+	return out;
 }
-*/
